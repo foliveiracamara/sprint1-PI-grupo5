@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 da lista 2 E</title>
+<style>
+    #idSelectPrincipal 
+
+
+    #idSelectMamiferos{
+        display: none;
+    }
+
+    #idSelectOviparos{
+        display: none;
+    }
+
+   
+   
+</style>
+
+</head>
+<body>
+    <h1><b>Exercício 9 --  Especies de Animais</b></h1>
+    <select id="idSelectPrincipal" onchange="familia_animais()">
+        <option id="idEscolha" value="EscolhaEspecie">Escolha uma espécie</option>
+        <option id="idOviparos" value="Oviparos">Oviparos</option>
+        <option id="idMamiferos" value="Mamiferos">Mamiferos</option>
+    </select>   
+
+    <select id="idSelectMamiferos" style="display: none;">
+        <option value="">-Escolha um mamífero-</option>
+        <option value="Elefante"></option>
+        <option value="Porco"></option>
+        <option value="Coelho"></option>
+    </select> 
+
+    <select  id="idSelectOviparos">
+        <option value="">-Escolha um ovíparo-</option>
+        <option value="Galinha"></option>
+        <option value="Peixe"></option>
+        <option value="Tartaruga"></option>
+    </select>  
+
+    <div id="div_resultado">
+    </div>   
+</body>
+</html>
+<script>
+    function familia_animais(){
+    
+
+        if (EscolhaEspecie.value){
+            div_resultado = "";
+        } 
+        
+        else if (idOviparos.value) {
+            div_resultado.innerHTML = `<select  id="idSelectOviparos">
+        <option value="">-Escolha um ovíparo-</option>
+        <option value="Galinha"></option>
+        <option value="Peixe"></option>
+        <option value="Tartaruga"></option>
+    </select>`;
+        } 
+        
+        else (idMamiferos.value); {
+            idSelectMamiferos.style.display = 'block';
+        }
+        
+        
+        
+
+    
+
+    }
+</script>
