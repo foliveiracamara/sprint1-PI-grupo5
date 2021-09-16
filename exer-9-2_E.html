@@ -5,69 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício 9 da lista 2 E</title>
-<style>
-    #idSelectPrincipal 
-
-
-    #idSelectMamiferos{
-        display: none;
-    }
-
-    #idSelectOviparos{
-        display: none;
-    }
-
-   
-   
-</style>
-
+    <link rel="stylesheet" type="text/css" href="style_exer-9-2_E.css">
 </head>
 <body>
     <h1><b>Exercício 9 --  Especies de Animais</b></h1>
     <select id="idSelectPrincipal" onchange="familia_animais()">
-        <option id="idEscolha" value="EscolhaEspecie">Escolha uma espécie</option>
-        <option id="idOviparos" value="Oviparos">Oviparos</option>
-        <option id="idMamiferos" value="Mamiferos">Mamiferos</option>
+        <option value="EscolhaEspecie">Escolha uma espécie</option>
+        <option value="Oviparo">Oviparos</option>
+        <option value="Mamifero">Mamiferos</option>
     </select>   
 
-    <select id="idSelectMamiferos" style="display: none;">
-        <option value="">-Escolha um mamífero-</option>
-        <option value="Elefante"></option>
-        <option value="Porco"></option>
-        <option value="Coelho"></option>
+    <select id="idSelectMamifero" onchange="familia_animais()">
+        <option value="EscolhaMamifero">-Escolha um mamífero-</option>
+        <option value="https://www.infoescola.com/wp-content/uploads/2016/12/elefante-asiatico-198685685.jpg">Elefante</option>
+        <option value="https://super.abril.com.br/wp-content/uploads/2021/05/porquinho_site.jpg?quality=70&strip=info&w=680&h=453&crop=1">Porco</option>
+        <option value="https://www.infoescola.com/wp-content/uploads/2008/07/coelho.jpg">Coelho</option>
     </select> 
 
-    <select  id="idSelectOviparos">
+    <select  id="idSelectOviparo" onchange="familia_animais()" >
         <option value="">-Escolha um ovíparo-</option>
-        <option value="Galinha"></option>
-        <option value="Peixe"></option>
-        <option value="Tartaruga"></option>
+        <option value="https://aventurasnahistoria.uol.scom.br/media/_versions/galinharicajjajjda_widexl.jpg">Galinha</option>
+        <option value="https://www.universodoaquario.com.br/image/cache/catalog/peixes/corais/peixes-palhaco-ocellaris-p-900x900.jpg">Peixe</option>
+        <option value="https://www.dicaspetz.com.br/wp-content/uploads/2020/05/como-criar-tartaruga.jpg">Tartaruga</option>
     </select>  
 
     <div id="div_resultado">
-    </div>   
+    </div>
+
+    <input type="text" id="ipt_valorAnimal" placeholder="Valor da compra do animal">
+    <button onclick="calcula()">Calcular imposto</button>
+
+    <div id="div_resultadoCalculo"></div>
+
 </body>
 </html>
 <script>
-    function familia_animais(){
+    var mamifero = idSelectMamifero.value
     
-
-        if (EscolhaEspecie.value){
-            div_resultado = "";
-        } 
-        
-        else if (idOviparos.value) {
-            div_resultado.innerHTML = `<select  id="idSelectOviparos">
-        <option value="">-Escolha um ovíparo-</option>
-        <option value="Galinha"></option>
-        <option value="Peixe"></option>
-        <option value="Tartaruga"></option>
-    </select>`;
-        } 
-        
-        else (idMamiferos.value); {
-            idSelectMamiferos.style.display = 'block';
+    
+    function familia_animais(){
+        if (idSelectPrincipal.value == ''){
+            idSelectOviparo.style.display = 'none';
+            idSelectMamifero.style.dispay = 'none';
         }
+
+        if (idSelectPrincipal.value == 'Oviparo'){
+            idSelectMamifero.style.display = 'none';
+            idSelectOviparo.style.display = 'block';
+            div_resultado.innerHTML = `<img src="${idSelectOviparo.value}" width="200px">`;
+        } 
+        
+        if (idSelectPrincipal.value == 'Mamifero') {
+            idSelectMamifero.style.display = 'block';
+            idSelectOviparo.style.display = 'none';
+            div_resultado.innerHTML = `<img src="${idSelectMamifero.value}" width="200px">`;
+        }
+
+
+        function calcula(){
+            if (mamifero * 0.5){
+                div_resultadoCalculo.innerHTML = `O imposto será de R$`
+            }
+        }
+
+        
+        
+
+       
+        
         
         
         
