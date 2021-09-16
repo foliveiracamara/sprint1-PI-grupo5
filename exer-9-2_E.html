@@ -16,7 +16,7 @@
     </select>   
 
     <select id="idSelectMamifero" onchange="familia_animais()">
-        <option value="EscolhaMamifero">-Escolha um mamífero-</option>
+        <option value="">-Escolha um mamífero-</option>
         <option value="https://www.infoescola.com/wp-content/uploads/2016/12/elefante-asiatico-198685685.jpg">Elefante</option>
         <option value="https://super.abril.com.br/wp-content/uploads/2021/05/porquinho_site.jpg?quality=70&strip=info&w=680&h=453&crop=1">Porco</option>
         <option value="https://www.infoescola.com/wp-content/uploads/2008/07/coelho.jpg">Coelho</option>
@@ -24,7 +24,7 @@
 
     <select  id="idSelectOviparo" onchange="familia_animais()" >
         <option value="">-Escolha um ovíparo-</option>
-        <option value="https://aventurasnahistoria.uol.scom.br/media/_versions/galinharicajjajjda_widexl.jpg">Galinha</option>
+        <option value="https://www.infoescola.com/wp-content/uploads/2017/04/galinha-101572393.jpg">Galinha</option>
         <option value="https://www.universodoaquario.com.br/image/cache/catalog/peixes/corais/peixes-palhaco-ocellaris-p-900x900.jpg">Peixe</option>
         <option value="https://www.dicaspetz.com.br/wp-content/uploads/2020/05/como-criar-tartaruga.jpg">Tartaruga</option>
     </select>  
@@ -40,33 +40,46 @@
 </body>
 </html>
 <script>
-    var mamifero = idSelectMamifero.value
+    var mamifero = idSelectMamifero.value;
+    var Oviparo = idSelectOviparo.value;
     
     
     function familia_animais(){
         if (idSelectPrincipal.value == ''){
-            idSelectOviparo.style.display = 'none';
-            idSelectMamifero.style.dispay = 'none';
+                idSelectOviparo.style.display = 'none';
+                idSelectMamifero.style.dispay = 'none';
         }
 
         if (idSelectPrincipal.value == 'Oviparo'){
-            idSelectMamifero.style.display = 'none';
-            idSelectOviparo.style.display = 'block';
+                idSelectMamifero.style.display = 'none';
+                idSelectOviparo.style.display = 'block';
             div_resultado.innerHTML = `<img src="${idSelectOviparo.value}" width="200px">`;
         } 
         
         if (idSelectPrincipal.value == 'Mamifero') {
-            idSelectMamifero.style.display = 'block';
-            idSelectOviparo.style.display = 'none';
+                idSelectMamifero.style.display = 'block';
+                idSelectOviparo.style.display = 'none';
             div_resultado.innerHTML = `<img src="${idSelectMamifero.value}" width="200px">`;
         }
+    
 
 
         function calcula(){
-            if (mamifero * 0.5){
-                div_resultadoCalculo.innerHTML = `O imposto será de R$`
+            
+            if (idSelectPrincipal == mamifero){
+                div_resultadoCalculo.innerHTML = mamifero;
+            } 
+            
+            if(Oviparo){
+                div_resultadoCalculo.innerHTML = `O imposto será de R$${ipt_valorAnimal.value * 0.10}`;
+            } else if (Mamifero){
+                div_resultadoCalculo.innerHTML = `O imposto será de R$${ipt_valorAnimal.value * 0.5}`;
             }
-        }
+            else {
+                div_resultadoCalculo.innerHTML = `${''}`
+            }
+            }
+            
 
         
         
